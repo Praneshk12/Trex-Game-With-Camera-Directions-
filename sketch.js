@@ -42,7 +42,7 @@ function setup() {
   trex.addAnimation("collided", trex_collided);
   trex.scale = 0.5;
   
-  ground = createSprite(200,180,400,20);
+  ground = createSprite(200,180,700,20);
   ground.addImage("ground",groundImage);
   ground.x = ground.width /2;
   ground.velocityX = -(6 + 3*score/100);
@@ -70,7 +70,7 @@ function setup() {
 
 function draw() {
   //trex.debug = true;
-  background('lightgrey');
+  background('lightblue')
   text("Score: "+ score, 500,50);
   
   if (gameState===PLAY){
@@ -89,7 +89,7 @@ function draw() {
   
     trex.collide(invisibleGround);
     spawnClouds();
-    spawnObstacles();
+    spawnObstacles();  
   
     if(obstaclesGroup.isTouching(trex)){
         gameState = END;
@@ -107,7 +107,7 @@ function draw() {
     
     //change the trex animation
     trex.changeAnimation("collided",trex_collided);
-    
+
     //set lifetime of the game objects so that they are never destroyed
     obstaclesGroup.setLifetimeEach(-1);
     cloudsGroup.setLifetimeEach(-1);
@@ -127,9 +127,8 @@ function spawnClouds() {
     var cloud = createSprite(600,120,40,10);
     cloud.y = Math.round(random(80,120));
     cloud.addImage(cloudImage);
-    cloud.scale = 0.5;
-    cloud.velocityX = -3;
-    
+    cloud.scale = 0.3;
+    cloud.velocityX = -3;    
      //assign lifetime to the variable
     cloud.lifetime = 200;
     
